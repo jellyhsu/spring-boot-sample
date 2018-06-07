@@ -35,7 +35,7 @@ pipeline {
         archiveArtifacts 'target/*.jar'
       }
     }
-   stage('Example') {
+   stage('wait for confirm') {
             input {
                 message "Should we deploy?"
                 ok "Yes, we should."
