@@ -25,6 +25,12 @@ pipeline {
         }
       }
     }
+    stage('Pkg') {
+      steps {
+        sh '''mvn package
+'''
+      }
+    }
   }
   post {
     always {
