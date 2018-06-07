@@ -11,6 +11,20 @@ pipeline {
         sh 'mvn cobertura:cobertura test'
       }
     }
+    stage('JUnit Report') {
+      parallel {
+        stage('JUnit Report') {
+          steps {
+            junit 'target/surefire-reports/*.xml'
+          }
+        }
+        stage('cobertura Report') {
+          steps {
+            cobertura(coberturaReportFile: 'target/site/cobertura/coverage.xml')
+          }
+        }
+      }
+    }
   }
   post {
     always {
